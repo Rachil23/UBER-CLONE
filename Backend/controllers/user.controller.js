@@ -1,6 +1,6 @@
 const { response } = require('../app');
 const userModel = require('../models/user.model'); 
-const UserService = require('../services/user.service'); 
+const userService = require('../services/user.service'); 
 const { validationResult } = require('express-validator'); 
 module.exports.registerUser = async (req ,res ,next) => {
 
@@ -10,10 +10,12 @@ module.exports.registerUser = async (req ,res ,next) => {
     }
 
     const { fullname, email, password } = req.body ;
+    
+    console.log(req.body);
 
     const hashedPassword = await userModel.hashpassword(password);
 
-    const user = await userServices.createUser ({
+    const user = await userService.createUser ({
         firstname : fullname.firstname, 
         lastname: fullname.lastname, 
         email, 
