@@ -1,6 +1,25 @@
-# User Registration Endpoint
+# User Authentication API
 
-## Endpoint: `/users/register`
+## User Login Endpoint
+
+### Endpoint: `/users/login`
+
+### Method: POST
+
+### Description
+This endpoint allows users to log in by providing their email and password. Upon successful authentication, it returns a JSON Web Token (JWT).
+
+### Request Body
+The request body must be in JSON format and contain the following:
+
+- `email` (String, required): User's email address (must be a valid email address).
+- `password` (String, required): User's password (must be a valid password).
+
+---
+
+## User Registration Endpoint
+
+### Endpoint: `/users/register`
 
 ### Method: POST
 
@@ -16,7 +35,7 @@ The request body should be a JSON object with the following fields:
 - `email`: A valid email address (required).
 - `password`: A string with a minimum length of 6 characters (required).
 
-Example:
+#### Example Request:
 ```json
 {
   "fullname": {
@@ -24,17 +43,6 @@ Example:
     "lastname": "SampleUserName"
   },
   "email": "Sample@sample.com",
-  "password": "password123",
-  "token": "JWT-token",
+  "password": "password123"
 }
 
-## Endpoint: `/users/login`
-
-### Method: POST
- 
-### Request Body
- 
-The request body must be in JSON format and contain the following:
-
-- `email` (String, required) : User's email address (must be a valid email address)
-- `password` (String, required) : User's password (must be a valid password)
