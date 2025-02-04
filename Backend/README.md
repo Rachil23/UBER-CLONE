@@ -27,3 +27,14 @@ Example:
   "password": "password123",
   "token": "JWT-token",
 }
+
+## Endpoint: `/users/login`
+
+### Method: POST
+ 
+### Request Body
+ 
+The request body must be in JSON format and contain the following:
+
+- `email` (String, required) : User's email address (must be a valid email address)
+- `password` (String, required) : User's password (must be a valid password)
