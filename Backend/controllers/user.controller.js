@@ -18,10 +18,16 @@ module.exports.registerUser = async (req ,res ,next) => {
 
     //const hashedPassword = await userModel.hashpassword(password);
 
-    /*  this is extra part of code*/
+    /*  this is extra part of code
     const existingUser = await userModel.findOne({ email });
     if (existingUser) {
         return res.status(400).json({ error: "Email already in use" });
+    }*/
+
+    const isUserAlready = await userModel.findOne({ email });
+
+    if (isUserAlready) {
+        return res.status(400).json({ message: 'User already exist' });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
