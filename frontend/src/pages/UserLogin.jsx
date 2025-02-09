@@ -1,28 +1,55 @@
 /* eslint-disable no-unused-vars */
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const UserLogin = () => {
+const [email, setEmail] = useState('')
+const [password, setPassword] = useState('')
+const [userData, setUserData] = useState({})
+
+const submitHandler = (e) => {
+    e.preventDefault();
+    setUserData({
+        email: email,
+        password: password
+    })
+    
+    setEmail('')
+    setPassword('')
+    
+}
+
+
   return (
     <div className='p-7 h-screen flex flex-col justify-between'>
         <div>
         <img className=" w-18 mb-6 " src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png"/>
 
-        <form>
+        <form onSubmit={(e)=>{
+            submitHandler(e);
+        }}>
 
-            <h3 className='text-xl mb-2'>What&apos;s your email ?</h3> 
+            <h3 className='text-xl  font-medium mb-2'>What&apos;s your email ?</h3> 
 
             <input 
                 required 
+                value={ email }
+                onChange={(e) => {
+                    setEmail(e.target.value);
+                }}
                 className='bg-[#eeeeee] rounded px-4 py-2 w-full text-lg placeholder:text-base'
                 type="email" 
                 placeholder='email@example.com' 
                 /> 
 
-            <h3 className='text-xl mb-2 mt-3' >Enter password : </h3>
+            <h3 className='text-xl  font-medium mb-2 mt-3' >Enter password : </h3>
 
             <input 
                 required 
+                value={ password }
+                onChange={(e) => {
+                    setPassword(e.target.value);
+                }}
                 className='bg-[#eeeeee] rounded px-4 py-2 w-full text-lg placeholder:text-base'
                 type="password" 
                 placeholder='Enter your password'/>
@@ -35,8 +62,10 @@ const UserLogin = () => {
         </form>    
         </div>  
         <div>
-            <button className='text-xl text-center mb-2 text-black font-semibold mt-7 w-full bg-gray-300 h-11 rounded align-center' >
-                Sign in as Captain</button>
+            <Link 
+            to={'/captain-login'}
+            className='text-xl flex items-center justify-center text-center mb-2 text-black font-semibold mt-7 w-full bg-[#A4CAFE] h-11 rounded align-center' >
+                Sign in as Captain</Link>
         </div>      
     </div>
   )

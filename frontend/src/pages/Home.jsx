@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 
 const Home = () => {
-    const [email, setemail] = useState(' ')
   return (
     <div>
         <div className='bg-cover bg-center bg-[url(https://images.unsplash.com/photo-1554260570-83dc2f46ef79?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8dGF4aSUyMFVJJTIwaW1hZ2V8ZW58MHx8MHx8fDA%3D)] h-screen pt-8 w-full flex justify-between flex-col'>
