@@ -3,6 +3,7 @@ import React from 'react'
 import { useState, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { UserDataContext } from '../context/UserContext'
 
 const UserSignup = () => {
     const [ email, setEmail ] = useState('')
@@ -11,8 +12,12 @@ const UserSignup = () => {
     const [ lastName, setLastName ] = useState('')
     const [ userData, setUserData ] = useState({})
 
-    const submitHandler = async (e) => {
+    const { user, setUser } = useContext(UserDataContext) ;
+    const navigate = useNavigate()
+
+    /* const submitHandler = async (e) => {
         e.preventDefault()
+
         const newUser = {
           fullname: {
             firstname: firstName,
@@ -21,13 +26,78 @@ const UserSignup = () => {
           email: email,
           password: password
         }
-        
+
+        /*
+        const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/register`, newUser)
+        */
+
+        /*
+        const response = await axios.post(import.meta.env.VITE_BASE_URL + "/users/register", newUser);
+
+        if( response.status === 201){
+            const data = response.data
+            setUser(data.user)
+            navigate('/home')
+        }
 
         setEmail('')
         setFirstName('')
         setLastName('')
         setPassword('')
+        */
+/*
+        try {
+            const response = await axios.post(import.meta.env.VITE_BASE_URL + "/users/register", newUser);
+            
+            if (response.status === 201) {
+                const data = response.data;
+                setUser(data.user);
+                navigate('/home');
+            }
+            
+            setEmail('');
+            setFirstName('');
+            setLastName('');
+            setPassword('');
+        } catch (error) {
+            console.error("Signup failed:", error);
+            alert("Signup failed! Please try again.");
+        }
     }
+*/
+
+const submitHandler = async (e) => {
+  e.preventDefault();
+  
+  const newUser = {
+      fullname: {
+          firstname: firstName.trim(),
+          lastname: lastName.trim()
+      },
+      email: email.trim(),
+      password: password.trim()
+  };
+
+  try {
+      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/register`, newUser, {
+          headers: { "Content-Type": "application/json" }
+      });
+      
+      if (response.status === 201) {
+          alert("Signup successful! Please login to continue.");
+          navigate('/login');
+      }
+
+      setEmail('');
+      setFirstName('');
+      setLastName('');
+      setPassword('');
+  } catch (error) {
+      console.error("Signup failed:", error);
+      alert(error.response?.data?.message || "Signup failed! Please try again.");
+  }
+};
+    
 
   return (
     <div>

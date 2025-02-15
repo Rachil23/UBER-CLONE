@@ -1,27 +1,24 @@
+/* eslint-disable react-refresh/only-export-components */
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React , {useState} from 'react'
+import React, { createContext, useState } from 'react';
 
-// eslint-disable-next-line no-undef, react-refresh/only-export-components
-export const UserDataContext = createContext()
+export const UserDataContext = createContext();
 
-// eslint-disable-next-line react/prop-types
-const UserContext = ({children}) => {
-
-    const [first, setfirst] = useState({
-        email:'',
-        fullName:{
-            firstName:'',
-            lastName:''
+const UserDataProvider = ({ children }) => {
+    const [user, setUser] = useState({
+        email: '',
+        fullName: {
+            firstName: '',
+            lastName: ''
         }
-    })
+    });
 
-  return (
-    <div>
-        <UserDataContext.Provider>
+    return (
+        <UserDataContext.Provider value={{ user, setUser }}>
             {children}
-        </UserDataContext.Provider>        
-    </div>
-  )
-}
+        </UserDataContext.Provider>
+    );
+};
 
-export default UserContext
+export default UserDataProvider;
