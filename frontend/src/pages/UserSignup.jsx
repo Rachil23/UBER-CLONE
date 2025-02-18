@@ -85,6 +85,8 @@ const submitHandler = async (e) => {
       
       if (response.status === 201) {
           alert("Signup successful! Please login to continue.");
+          const data = response.data;
+          localStorage.setItem('token', data.token)
           navigate('/login');
       }
 
