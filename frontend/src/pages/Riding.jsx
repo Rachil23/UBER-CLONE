@@ -19,7 +19,7 @@ const Riding = () => {
         <div className='h-1/2 py-4 px-4.5'>
             {/* Data of ride confirmed starts here*/ }
 
-            <div className='flex items-center justify-between'>
+            <div className='flex items-center justify-between mt-6'>
     <img className="h-18" src='https://www.uber-assets.com/image/upload/v1699622825/assets/26/12256b-fe40-4f78-b94c-d2ffdec56a23/original/UberBlack.png'/>
         <div className='text-right'>
             <h2 className='text-lg font-medium '>Sarthak</h2>
