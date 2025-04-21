@@ -4,9 +4,14 @@ import React , { useContext }from 'react'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
 import { CaptainDataContext } from '../context/CaptainContext'
 import CaptainDetails from '../components/CaptainDetails'
 import RidePopUp from '../components/RidePopUp'
+import ConfirmRidePopUP from '../components/ConfirmRidePopUP'
+
+
 
 const CaptainHome = () => {
 
@@ -21,13 +26,13 @@ const CaptainHome = () => {
       setRide({
         user: {
           fullname: {
-            firstname: 'Harsh',
+            firstname: 'Harshita',
             lastname: 'Sharma',
           },
         },
         pickup: 'Times Square, NY',
         destination: 'Central Park, NY',
-        fare: 150,
+        fare: 150.67,
       });
     }, 1000);
 
@@ -36,16 +41,24 @@ const CaptainHome = () => {
 
   const confirmRide = () => {
     console.log('Ride Confirmed!');
-    setRidePopupPanel(false);
+    setRidePopupPanel(false)
+    setConfirmRidePopupPanel(true);
   };
 
   return (
     <div className='h-screen'>
             <div className='fixed p-6 top-0 flex items-center justify-between w-screen'>
                 <img className='w-18' src="https://upload.wikimedia.org/wikipedia/commons/c/cc/Uber_logo_2018.png" alt="" />
-                <Link to='/captain-home' className=' h-10 w-10 bg-white flex items-center justify-center rounded-full'>
+                <Link to='/captain-login' className=' h-10 w-10 bg-white flex items-center justify-center rounded-full'>
                     <i className="text-lg font-medium ri-logout-box-r-line"></i>
                 </Link>
+            </div>
+            <div className='fixed top-20 right-6'>
+                <div onClick={() => {
+                setConfirmRidePopupPanel(true)
+            }} className=' h-10 w-10 bg-white flex items-center justify-center rounded-full'>
+                    <i className=" text-2xl ri-user-location-line"></i>
+                </div>
             </div>
     
 
@@ -57,15 +70,23 @@ const CaptainHome = () => {
             <div className='h-1/4 py-4 px-4.5'>
                 <CaptainDetails/>
           </div>
-          <div className="fixed z-10 w-full  bg-white bottom-0 px-3 py-8">
+          <div className="fixed z-10 w-full bg-white bottom-0 px-3 py-8">
             {ride && showRidePopup && (
                 <RidePopUp
-                    ride={ride}
-                    confirmRide={confirmRide}
-                    setRidePopupPanel={setRidePopupPanel}
-                    setConfirmRidePopupPanel={setConfirmRidePopupPanel}
+                  ride={ride}
+                  confirmRide={confirmRide}
+                  setRidePopupPanel={setRidePopupPanel}
+                  setConfirmRidePopupPanel={setConfirmRidePopupPanel}
                 />
                 )}
+            {showConfirmRidePopupPanel && (
+                <ConfirmRidePopUP
+                  ride={ride}
+                  confirmRide={confirmRide} 
+                  setRidePopupPanel={setRidePopupPanel} 
+                  setConfirmRidePopupPanel={setConfirmRidePopupPanel}
+                />
+                )}        
           </div>
         </div>
   )
