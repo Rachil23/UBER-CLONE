@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 import PropTypes from 'prop-types';
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const ConfirmRidePopUP = (props) => {
   return (
@@ -45,14 +46,15 @@ const ConfirmRidePopUP = (props) => {
                     
                     <button onClick={() => {
                         props.setRidePopupPanel(false)
+                        props.setConfirmRidePopupPanel(false)
                     }} className='w-full flex-1 bg-red-400 text-white font-semibold p-2 px-10 rounded-lg'>
                         Cancel</button>
 
-                    <button onClick={() => {
+                    <Link to='/captain-riding' onClick={() => {
                         
                         props.confirmRide()
-                    }} className='bg-green-600 flex-1 w-full text-white font-semibold p-2 px-10 rounded-lg'>
-                        Confirm</button>
+                    }} className='bg-green-600 flex-1 w-full flex justify-center text-white font-semibold p-2 px-10 rounded-lg'>
+                        Confirm</Link>
 
                 </div>
             </div>

@@ -40,7 +40,6 @@ const CaptainHome = () => {
   }, []);
 
   const confirmRide = () => {
-    console.log('Ride Confirmed!');
     setRidePopupPanel(false)
     setConfirmRidePopupPanel(true);
   };
