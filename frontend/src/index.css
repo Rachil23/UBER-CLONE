@@ -1,1 +1,12 @@
+@import url('https://unpkg.com/leaflet@1.9.4/dist/leaflet.css');
 @import "tailwindcss";
+
+.leaflet-control-attribution {
+    font-size: 10px;
+    background: transparent;
+    color: gray;
+  }
+
+  .leaflet-control-attribution {
+    display: none !important;
+  }

@@ -21,11 +21,12 @@ const ConfirmRidePopUP = (props) => {
   };
 
   const handleConfirm = () => {
+    console.log("ride being passed to navigate:", props.ride);
     const enteredOtp = otp.join('');
     const correctOtp = '1234';
     if (enteredOtp === correctOtp) {
       props.confirmRide();
-      navigate('/captain-riding');
+      navigate('/captain-riding', { state: { ride: props.ride } });
     } else {
       setIsValid(false);
     }
@@ -111,7 +112,8 @@ const ConfirmRidePopUP = (props) => {
               </button>
 
               <Link
-                to='#'
+                to='/captain-riding'
+                
                 onClick={(e) => {
                   e.preventDefault();
                   handleConfirm();
@@ -122,6 +124,9 @@ const ConfirmRidePopUP = (props) => {
               >
                 Confirm
               </Link>
+
+
+            
             </div>
           </form>
         </div>

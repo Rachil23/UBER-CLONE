@@ -30,9 +30,9 @@ const CaptainHome = () => {
             lastname: 'Sharma',
           },
         },
-        pickup: 'Times Square, NY',
-        destination: 'Central Park, NY',
-        fare: 150.67,
+        pickup: "Chhatrapati Shivaji Terminus, Mumbai",
+        destination: "Bandra Worli Sea Link, Mumbai",
+        fare: 323.67,
       });
     }, 1000);
 
