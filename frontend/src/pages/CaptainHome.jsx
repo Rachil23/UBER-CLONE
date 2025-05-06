@@ -54,7 +54,7 @@ const CaptainHome = () => {
             </div>
             <div className='fixed top-20 right-6'>
                 <div onClick={() => {
-                setConfirmRidePopupPanel(true)
+                setRidePopupPanel(true)
             }} className=' h-10 w-10 bg-white flex items-center justify-center rounded-full'>
                     <i className=" text-2xl ri-user-location-line"></i>
                 </div>
