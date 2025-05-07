@@ -11,17 +11,17 @@ const FinishRide = (props) => {
     setAnimationStarted(true);
     setTimeout(() => {
       setRideCompleted(true);
-    }, 900); // faster animation (0.9s)
+    }, 900);
   };
 
   return (
     <div className="relative">
-      {/* Close Button */}
+    
       <h5 className="p-2 text-center w-[93%] absolute -top-3 left-40 right-2 z-20 " onClick={() => props.setFinishRidePanel(false)}>
         <i className="  text-3xl text-gray-500 ri-arrow-down-wide-line"></i>
       </h5>
 
-      {/* Moving car animation overlay */}
+   
       {animationStarted && !rideCompleted && (
         <div className="absolute inset-0 bg-white/70 z-20 flex items-center justify-start">
           <div className="w-full relative h-24">
@@ -34,7 +34,7 @@ const FinishRide = (props) => {
         </div>
       )}
 
-      {/* Ride Details (still visible underneath) */}
+    
       <div className={animationStarted ? 'opacity-50 pointer-events-none' : ''}>
         <h3 className="text-2xl font-semibold mb-5 ">Finish this Ride</h3>
         <div className="flex items-center justify-between p-4 border bg-gray-100 rounded-lg mt-4">

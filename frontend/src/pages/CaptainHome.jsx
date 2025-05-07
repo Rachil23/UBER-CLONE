@@ -10,6 +10,8 @@ import { CaptainDataContext } from '../context/CaptainContext'
 import CaptainDetails from '../components/CaptainDetails'
 import RidePopUp from '../components/RidePopUp'
 import ConfirmRidePopUP from '../components/ConfirmRidePopUP'
+import DriverFound from "../components/DriverFound";
+
 
 
 
@@ -20,6 +22,9 @@ const CaptainHome = () => {
   const [ride, setRide] = useState(null);
   const [showRidePopup, setRidePopupPanel] = useState(true);
   const [showConfirmRidePopupPanel, setConfirmRidePopupPanel] = useState(false);
+
+  
+
 
   useEffect(() => {
     const timer = setTimeout(() => {
