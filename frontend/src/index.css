@@ -10,3 +10,12 @@
   .leaflet-control-attribution {
     display: none !important;
   }
+
+  /* Hide scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

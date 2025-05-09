@@ -6,7 +6,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-// Custom Icons
+
 const pickupIcon = new L.Icon({
   iconUrl: 'https://cdn-icons-png.flaticon.com/512/684/684908.png',
   iconSize: [30, 30],
@@ -22,7 +22,7 @@ const dropIcon = new L.Icon({
 });
 
 const MapView = ({ pickup, drop }) => {
-  const center = pickup || drop || { lat: 19.0760, lng: 72.8777 }; // fallback to Mumbai
+  const center = pickup || drop || { lat: 19.0760, lng: 72.8777 }; 
 
   return (
     <MapContainer center={[center.lat, center.lng]} zoom={13} style={{ height: '100%', width: '100%' }}>
