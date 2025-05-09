@@ -31,7 +31,7 @@ const CaptainHome = () => {
       setRide({
         user: {
           fullname: {
-            firstname: 'Harshita',
+            firstname: 'Harshit',
             lastname: 'Sharma',
           },
         },

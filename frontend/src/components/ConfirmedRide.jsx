@@ -5,20 +5,29 @@ import PropTypes from 'prop-types';
 const ConfirmedRide = (props) => {
   return (
     <div>
-
-      <h6 className="absolute top-7 right-5 text-2xl text-gray-600" onClick={
-        () => props.setConfirmRidePanel(false)
-      }>
+      <h6
+        className="absolute top-7 right-5 text-2xl text-gray-600"
+        onClick={() => props.setConfirmRidePanel(false)}
+      >
         <i className="ri-arrow-down-wide-fill"></i>
       </h6>
 
       <h3 className="text-2xl font-semibold mb-5 px-1">Confirm your Ride</h3>
 
       <div className="flex justify-between flex-col items-center">
-        <img className="h-38" src='https://www.uber-assets.com/image/upload/v1699622825/assets/26/12256b-fe40-4f78-b94c-d2ffdec56a23/original/UberBlack.png' />
+        {props.selectedVehicle && (
+          <div className="flex flex-col items-center mb-4">
+            <img
+              className="h-28 mb-2"
+              src={props.selectedVehicle.image}
+              alt={props.selectedVehicle.name}
+            />
+            <h5 className="text-xl font-semibold">{props.selectedVehicle.name}</h5>
+            <h6 className="text-lg text-gray-600">{props.selectedVehicle.timeAway} away</h6>
+          </div>
+        )}
 
         <div className='w-full'>
-
           <div className='flex items-center gap-5 p-3 border-b-2 border-gray-300'>
             <i className="ri-map-pin-2-fill text-3xl"></i>
             <div>
@@ -38,7 +47,7 @@ const ConfirmedRide = (props) => {
           <div className='flex items-center gap-5 p-3'>
             <i className="ri-money-rupee-circle-fill text-3xl"></i>
             <div>
-              <h3 className='text-xl font-semibold'>193.20</h3>
+              <h3 className='text-xl font-semibold'>{props.selectedVehicle?.price ?? '193.20'}</h3>
               <p className='text-lg -mt-1 text-gray-700'>Cash</p>
             </div>
           </div>
@@ -54,16 +63,16 @@ const ConfirmedRide = (props) => {
           Confirm
         </button>
       </div>
-
     </div>
-  )
-}
+  );
+};
 
 ConfirmedRide.propTypes = {
   setVehiclePanel: PropTypes.func.isRequired,
   setVehicleFound: PropTypes.func.isRequired,
   setConfirmRidePanel: PropTypes.func.isRequired,
   setDriverAccepted: PropTypes.func.isRequired,
+  selectedVehicle: PropTypes.object,
 };
 
-export default ConfirmedRide
+export default ConfirmedRide;

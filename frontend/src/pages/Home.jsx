@@ -38,6 +38,8 @@ const Home = () => {
   const [pickupCoords, setPickupCoords] = useState(null);
   const [destinationCoords, setDestinationCoords] = useState(null);
 
+  const [selectedVehicle, setSelectedVehicle] = useState(null);
+
   {/*
   const submitHandler = (e) => {
     e.preventDefault();
@@ -221,14 +223,21 @@ const Home = () => {
       <div ref={vehiclePanelRef} className="fixed z-10 w-full translate-y-full bg-gray-200 bottom-0 px-3 py-8">
           <VehiclePanel 
             setConfirmRidePanel={setConfirmRidePanel} 
-            setVehiclePanel={setVehiclePanel} /> 
+            setVehiclePanel={setVehiclePanel} 
+            setSelectedVehicle={setSelectedVehicle}
+            /> 
+            
       </div>
 
       <div ref={confirmRidePanelRef} className="fixed z-10 w-full translate-y-full bg-gray-200 bottom-0 px-3 py-6">
-          <ConfirmedRide setConfirmRidePanel={setConfirmRidePanel} 
+          <ConfirmedRide 
+            setConfirmRidePanel={setConfirmRidePanel} 
             setVehiclePanel={setVehiclePanel} 
             setVehicleFound={setVehicleFound} 
-            setDriverAccepted={setDriverAccepted}/> 
+            setDriverAccepted={setDriverAccepted}
+            selectedVehicle={selectedVehicle}
+            /> 
+            
       </div>
 
       
@@ -239,6 +248,7 @@ const Home = () => {
             setConfirmRidePanel={setConfirmRidePanel} 
             setVehicleFound={setVehicleFound} 
             setDriverFound={setDriverFound} 
+            selectedVehicle={selectedVehicle}
           />
         </div>
       )}

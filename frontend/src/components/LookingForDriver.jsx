@@ -13,7 +13,10 @@ const LookingForDriver = (props) => {
           <h3 className="text-2xl font-semibold mb-5 px-1">Looking for a Driver</h3>
 
           <div className="flex justify-between flex-col items-center">
-            <img className="h-38" src='https://www.uber-assets.com/image/upload/v1699622825/assets/26/12256b-fe40-4f78-b94c-d2ffdec56a23/original/UberBlack.png'/>
+
+          {props.selectedVehicle && (
+            <img className="h-38 mb-4" src={props.selectedVehicle.image} alt="selected ride" />
+          )}
 
             <div className='w-full'>
 
@@ -53,6 +56,7 @@ LookingForDriver.propTypes = {
     setVehiclePanel: PropTypes.func.isRequired,
     setVehicleFound: PropTypes.func.isRequired, 
     setConfirmRidePanel: PropTypes.func.isRequired, 
+    selectedVehicle: PropTypes.object,
 };
 
 export default LookingForDriver
